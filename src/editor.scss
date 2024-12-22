@@ -1,0 +1,114 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+
+.whitepaper-input-wrapper {
+    font-size: 15px;
+    input {
+        box-sizing: border-box;
+        margin: 0;
+        font-family: 'Work Sans', Sans-Serif;
+        font-size: 16px;
+        font-weight: 400;
+        font-style: inherit;
+        line-height: 1.65;
+        letter-spacing: 0;
+        text-transform: none;
+        text-decoration: none;
+        appearance: none;
+        width: 100%;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid #c7c7c7;
+        border-radius: 5px;
+        background-color: #ffffff;
+        color: #2c5162;
+        transition: 
+            color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), 
+            border-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955), 
+            background-color 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+
+    input[type="checkbox"] {
+        box-sizing: border-box;
+        height: 20px !important;
+        width: 20px !important;
+        display: inline-block;
+        vertical-align: baseline;
+        position: relative;
+        top: 3px;
+        min-width: 16px;
+        padding: 0 !important;
+        margin: 0;
+        margin-right: 0.7em;
+        border: 1px solid #c7c7c7;
+        border-radius: 3px;
+        cursor: pointer;
+        appearance: none;
+        background: rgba(0, 0, 0, 0);
+        transition: border-color 0.12s ease, background-color 0.12s ease;
+    }
+    
+    input[type="checkbox"]:checked {
+        background-color: #2d5262;
+        border-color: #2d5262;
+    }
+    
+    input[type="checkbox"]:focus {
+        outline: none;
+        border-color: #2d5262;
+    }
+    
+    input:focus {
+        color: #2c5162;
+        background-color: #ffffff;
+        border-color: #2d5262;
+    }
+}
+
+.whitepaper-submit {
+    box-sizing: border-box;
+    margin: 0;
+    font: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px; /* Defaultní výška tlačítka */
+    padding: 5px 20px; /* Standardní padding */
+    appearance: none;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    border-radius: 10px; /* Zaoblení hran */
+    transition: all 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    position: relative;
+    color: #ffffff; /* Barva textu */
+    border: 1px solid #fc4620; /* Barva okraje */
+    background-color: #fc4620; /* Výchozí barva pozadí */
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px; /* Velikost textu */
+    font-weight: 800; /* Tučné písmo */
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: uppercase; /* Velká písmena */
+    text-decoration: none; /* Bez podtržení */
+}
+
+.whitepaper-submit:hover {
+    background-color: rgba(252, 69, 33, 0); /* Průhledné pozadí při hover */
+    color: #fc4620; /* Změna barvy textu při hover */
+    border-color: #fc4620; /* Zachování barvy okraje */
+}
+
+.whitepaper-submit:focus {
+    outline: none; /* Odstranění obrysu při focus */
+    box-shadow: 0 0 0 3px rgba(252, 69, 33, 0.5); /* Zvýraznění focus */
+}
+
+.whitepaper-submit:disabled {
+    background-color: #c7c7c7; /* Šedá barva pozadí pro deaktivované tlačítko */
+    color: #ffffff; /* Barva textu pro deaktivované tlačítko */
+    cursor: not-allowed;
+    border-color: #c7c7c7;
+}
+
