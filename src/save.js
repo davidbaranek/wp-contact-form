@@ -18,57 +18,56 @@ import { __ } from '@wordpress/i18n';
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
-    const { template, siteKey } = attributes;
+    const { siteKey } = attributes;
 
     return (
         <div {...useBlockProps.save()} data-sitekey={siteKey}>
             <div>
-                <div className='whitepaper-row-wrapper'>
-                    <div className='whitepaper-input-wrapper'>
+                <div className='contact-form-row-wrapper'>
+                    <div className='contact-form-input-wrapper'>
                         <label>
-                            {__('First Name', 'whitepaper')}
-                            <input className="whitepaper-first-name" type="text" placeholder={__('Enter your first name', 'whitepaper')} required />
+                            {__('First Name', 'bardav')}
+                            <input required className="contact-form-first-name" type="text" placeholder={__('Enter your first name', 'bardav')} />
                         </label>
                     </div>
-                    <div className='whitepaper-input-wrapper'>
+                    <div className='contact-form-input-wrapper'>
                         <label>
-                            {__('Last Name', 'whitepaper')}
-                            <input className="whitepaper-last-name" type="text" placeholder={__('Enter your last name', 'whitepaper')} required />
-                        </label>
-                    </div>
-                </div>
-                <div className='whitepaper-row-wrapper'>
-                    <div className='whitepaper-input-wrapper'>
-                        <label>
-                            {__('Email', 'whitepaper')}
-                            <input className="whitepaper-email" type="email" placeholder={__('Enter your email', 'whitepaper')} required />
+                            {__('Last Name', 'bardav')}
+                            <input required className="contact-form-last-name" type="text" placeholder={__('Enter your last name', 'bardav')} />
                         </label>
                     </div>
                 </div>
-                <div className='whitepaper-row-wrapper whitepaper-row-wrapper-checkbox'>
-                    <div className='whitepaper-input-wrapper'>
+                <div className='contact-form-row-wrapper'>
+                    <div className='contact-form-input-wrapper'>
                         <label>
-                            <input className="whitepaper-subscribe ct-checkbox" type="checkbox" />
-                            {__('Subscribe to newsletter', 'whitepaper')}
+                            {__('Email', 'bardav')}
+                            <input required className="contact-form-email" type="email" placeholder={__('Enter your email', 'bardav')} />
                         </label>
                     </div>
                 </div>
-                <div className='whitepaper-row-wrapper whitepaper-row-wrapper-checkbox'>
-                    <div className='whitepaper-input-wrapper'>
+                <div className='contact-form-row-wrapper'>
+                    <div className='contact-form-input-wrapper'>
                         <label>
-                            <input className="whitepaper-subscribe ct-checkbox" type="checkbox" required />
-                            {__('Accept Terms and Conditions and Privacy Policy', 'whitepaper')}
+                            {__('Message', 'bardav')}
+                            <textarea required className="contact-form-message" type="text" placeholder={__('Write your message', 'bardav')} />
                         </label>
                     </div>
                 </div>
-                <div className='whitepaper-row-wrapper'>
-                    <div className='whitepaper-input-wrapper'>
-                        <input className="whitepaper-type" type="hidden" name="type" value={template} />
-                        <button className="whitepaper-submit button" type="submit">{__('Send', 'whitepaper')}</button>
-                        <div className="whitepaper-form-messages" style={{ color: 'red' }}></div>
+                <div className='contact-form-row-wrapper contact-form-row-wrapper-checkbox'>
+                    <div className='contact-form-input-wrapper'>
+                        <label>
+                            <input required className="contact-form-subscribe ct-checkbox" type="checkbox" />
+                            {__('Accept Terms and Conditions and Privacy Policy', 'bardav')}
+                        </label>
+                    </div>
+                </div>
+                <div className='contact-form-row-wrapper'>
+                    <div className='contact-form-input-wrapper'>
+                        <button className="contact-form-submit wp-element-button" type="submit">{__('Send', 'bardav')}</button>
+                        <div className="contact-form-form-messages" style={{ color: 'red' }}></div>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }

@@ -5,15 +5,13 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-console.log('Hello World! (from create-block-whitepaper block)');
-
 document.addEventListener('DOMContentLoaded', function () {
-    const formWrapper = document.querySelector('.wp-block-adm-whitepaper');
+    const formWrapper = document.querySelector('.wp-block-bardav-contact-form');
     if (formWrapper) {
         attachFormHandler(formWrapper);
     } else {
         const observer = new MutationObserver(() => {
-            const block = document.querySelector('.wp-block-adm-whitepaper');
+            const block = document.querySelector('.wp-block-bardav-contact-form');
             if (block) {
                 observer.disconnect();
                 attachFormHandler(block);
@@ -25,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function attachFormHandler(formWrapper) {
     const requiredFields = formWrapper.querySelectorAll('[required]');
-    const formFields = formWrapper.querySelectorAll('input');
-    const messageDiv = formWrapper.querySelector('.whitepaper-form-messages');
-    const submitButton = formWrapper.querySelector('.whitepaper-submit');
+    const formFields = formWrapper.querySelectorAll('input, textarea');
+    const messageDiv = formWrapper.querySelector('.contact-form-form-messages');
+    const submitButton = formWrapper.querySelector('.contact-form-submit');
 
     if (!submitButton) {
         console.error('Submit button not found in the block.');
@@ -72,11 +70,10 @@ function attachFormHandler(formWrapper) {
 
         // Sběr dat z formuláře
         const formData = {
-            first_name: formWrapper.querySelector('.whitepaper-first-name')?.value.trim(),
-            last_name: formWrapper.querySelector('.whitepaper-last-name')?.value.trim(),
-            email: formWrapper.querySelector('.whitepaper-email')?.value.trim(),
-            subscribe: formWrapper.querySelector('.whitepaper-subscribe')?.checked,
-            type: formWrapper.querySelector('.whitepaper-type')?.value.trim(),
+            first_name: formWrapper.querySelector('.contact-form-first-name')?.value.trim(),
+            last_name: formWrapper.querySelector('.contact-form-last-name')?.value.trim(),
+            email: formWrapper.querySelector('.contact-form-email')?.value.trim(),
+            message: formWrapper.querySelector('.contact-form-message')?.value.trim()
         };
 
         try {
@@ -91,7 +88,7 @@ function attachFormHandler(formWrapper) {
             }
             formData.recaptchaToken = token;
 
-            const response = await fetch(`${window.location.origin}/wp-json/whitepaper/v1/submit/`, {
+            const response = await fetch(`${window.location.origin}/wp-json/contact-form/v1/submit/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -123,14 +120,14 @@ function attachFormHandler(formWrapper) {
         }
 
         submitButton.disabled = false;
-        submitButton.innerHTML = 'Submit';
+        //submitButton.innerHTML = 'Submit';
     });
 }
 
 // Function to validate a single field
 function validateField(field) {
     const errorHTML = `
-        <div class="whitepaper-validation-error" role="alert">
+        <div class="contact-form-validation-error" role="alert">
             <p>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                     <path d="M10 2c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zm1.13 9.38l.35-6.46H8.52l.35 6.46h2.26zm-.09 3.36c.24-.23.37-.55.37-.96 0-.42-.12-.74-.36-.97s-.59-.35-1.06-.35-.82.12-1.07.35-.37.55-.37.97c0 .41.13.73.38.96.26.23.61.34 1.06.34s.8-.11 1.05-.34z"></path>
@@ -149,14 +146,14 @@ function validateField(field) {
         // Validation for checkbox
         if (field.required && !field.checked) {
             const errorMessage = 'You must accept the Terms and Conditions.';
-            if (!errorDiv || !errorDiv.classList.contains('whitepaper-validation-error')) {
+            if (!errorDiv || !errorDiv.classList.contains('contact-form-validation-error')) {
                 label.insertAdjacentHTML('afterend', errorHTML.replace('{ERROR_MESSAGE}', errorMessage));
             } else {
                 errorDiv.querySelector('span').textContent = errorMessage;
             }
             field.classList.add('invalid');
         } else {
-            if (errorDiv && errorDiv.classList.contains('whitepaper-validation-error')) {
+            if (errorDiv && errorDiv.classList.contains('contact-form-validation-error')) {
                 errorDiv.remove();
             }
             field.classList.remove('invalid');
@@ -167,7 +164,7 @@ function validateField(field) {
 
         if (field.required && !field.value.trim()) {
             const errorMessage = 'This field is required.';
-            if (!errorDiv || !errorDiv.classList.contains('whitepaper-validation-error')) {
+            if (!errorDiv || !errorDiv.classList.contains('contact-form-validation-error')) {
                 field.insertAdjacentHTML('afterend', errorHTML.replace('{ERROR_MESSAGE}', errorMessage));
             } else {
                 errorDiv.querySelector('span').textContent = errorMessage;
@@ -175,14 +172,14 @@ function validateField(field) {
             field.classList.add('invalid');
         } else if (field.type === 'email' && !isValidEmail(field.value.trim())) {
             const errorMessage = 'Please enter a valid email address.';
-            if (!errorDiv || !errorDiv.classList.contains('whitepaper-validation-error')) {
+            if (!errorDiv || !errorDiv.classList.contains('contact-form-validation-error')) {
                 field.insertAdjacentHTML('afterend', errorHTML.replace('{ERROR_MESSAGE}', errorMessage));
             } else {
                 errorDiv.querySelector('span').textContent = errorMessage;
             }
             field.classList.add('invalid');
         } else {
-            if (errorDiv && errorDiv.classList.contains('whitepaper-validation-error')) {
+            if (errorDiv && errorDiv.classList.contains('contact-form-validation-error')) {
                 errorDiv.remove();
             }
             field.classList.remove('invalid');

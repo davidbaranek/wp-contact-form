@@ -1,27 +1,23 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "adm/whitepaper",
+	"name": "bardav/contact-form",
 	"version": "0.1.0",
-	"title": "Whitepaper",
+	"title": "Contact Form",
 	"category": "widgets",
-	"icon": "admin-page",
-	"description": "Block for sending whitepaper to a customer.",
+	"icon": "admin-comments",
+	"description": "Simple contact form.",
 	"example": {},
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-		"template": {
-			"type": "string",
-			"default": "dentapreg"
-		},
 		"siteKey": {
 			"type": "string",
 			"default": ""
 		}
 	},
-	"textdomain": "whitepaper",
+	"textdomain": "bardav",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
